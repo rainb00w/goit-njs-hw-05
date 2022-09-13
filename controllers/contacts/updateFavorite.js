@@ -3,12 +3,10 @@ const {Contact} = require("../../models/contact")
 const { RequestError } = require("../../helpers");
 
 const updateFavorite = async (req, res) => {
-    console.log("REQ BODY", req.body)
 
       if(!req.body) {
-        console.log('Not exist now')
+        throw RequestError(404, "Body not exist now");
       }
-      console.log(req);
       const { contactId } = req.params;
       const result = await Contact.findByIdAndUpdate(contactId, req.body, {new: true});
    

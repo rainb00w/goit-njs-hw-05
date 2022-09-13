@@ -8,7 +8,6 @@ const getUserData = async (req, res) => {
   if (!user || tokenCheck === '') {
     throw RequestError(401, "Not authorized");
   }
-  // console.log('token', user.token);
   res.status(200).json({
     email: user.email,
     subscription: user.subscription,
